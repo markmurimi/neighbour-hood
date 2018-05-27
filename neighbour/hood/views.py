@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile, Post
 from .forms import ProfileForm
 from django.contrib.auth.models import User
 
@@ -9,7 +9,8 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 def home(request):
-    return render(request, 'home.html')
+    images = Post.get_posts()
+    return render(request, 'home.html', {"images": images})
 
 @login_required(login_url='/accounts/login')
 def create_profile(request):
