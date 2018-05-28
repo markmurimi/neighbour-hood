@@ -56,6 +56,16 @@ class Post(models.Model):
         images = Post.objects.all ()
         return images
 
+    @classmethod
+    def get_post_by_id(cls, id):
+        '''
+        Method that loopps through the class and pick an anticipated id
+        Returns:
+            selected_post : desired post
+        '''
+        selected_post = Post.objects.filter_by(id=id)
+        return selected_post
+
 class Business(models.Model):
     name = models.CharField(max_length =20)
     b_email = models.CharField(max_length= 40)
@@ -75,4 +85,12 @@ class Business(models.Model):
         '''Method to delete a certain business'''
         self.delete()
 
-    
+    @classmethod
+    def get_businesses(cls):
+        '''
+        Method that gets all image posts from the database
+        Returns:
+            get_posts : list of image post objects from the database
+        ''' 
+        businesses = Business.objects.all ()
+        return businesses

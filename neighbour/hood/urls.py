@@ -4,10 +4,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    url('^$',views.welcome,name = 'welcome'),
-    url(r'^home/$', views.home, name= 'home'),
+    url(r'^$',views.welcome,name = 'welcome'),
+    url(r'^home/', views.home, name= 'home'),
     url(r'^updateProfile/', views.create_profile, name="createProfile"),
     url(r'^profile/', views.profile, name='profile'),
+    url(r'^businesses/$', views.businesses, name= 'businesses'),
+    url(r'^photo/(\d+)', views.single_photo, name='single_photo'),
+
 
 ]
 

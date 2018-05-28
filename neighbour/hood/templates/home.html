@@ -2,18 +2,18 @@
 
 {% block content %}
 <body>
-        {% for images_item in images %}
-        <h1 style="color:white;text-align: center;text-decoration: underline;">{{images_item.neighbourhood.neighbourhood_name}} Neighbourhood.</h1>
+        {% for post in posts %}
+        <h1 style="color:white;text-align: center;text-decoration: underline;">{{post.neighbourhood.neighbourhood_name}} Neighbourhood.</h1>
         <div class="container-fluid">
         <div class="well"style="background-color:white;margin-left:26%;margin-right:16%;opacity:0.9;margin-top:2%;">
-                <h3 style="padding-left:5px;padding-right:20px;margin-top:-10px;margin-bottom:-13px;font-weight:bolder;"><img style="width:60px;height:60px;border-radius:118px" src="{{images_item.profile.profile_pic.url}}">{{images_item.profile.name}}</h3>
+                <h3 style="padding-left:5px;padding-right:20px;margin-top:-10px;margin-bottom:-13px;font-weight:bolder;"><img style="width:60px;height:60px;border-radius:118px" src="{{post.profile.profile_pic.url}}">{{post.profile.name}}</h3>
                 <hr style="background-color: black;">                
-                <img class="img-responsive"style="width:950px;height:750px;margin-top:-7px;" src="{{images_item.post.url}}">
+                <a href="{% url 'single_photo' post.id %}"><img class="img-responsive"style="width:950px;height:750px;margin-top:-7px;" src="{{post.post.url}}"></a>
                 <h2 style="text-decoration: underline;">Caption</h2>
-                <h3>{{images_item.post_caption}}.</h3>
+                <h3>{{post.post_caption}}.</h3>
         </div>
         <div class="well" style="float:right;width:15%;margin-top:-60%;margin-left:0%;text-align:center;font-weight:bold;opacity:0.7;">
-            <h3 style="padding-left:5px;padding-right:20px;margin-top:-10px;margin-bottom:-13px;font-weight:bolder;">{{images_item.business.name}}</h3>
+            <h3 style="padding-left:5px;padding-right:20px;margin-top:-10px;margin-bottom:-13px;font-weight:bolder;">{{post.business.name}}</h3>
         </div>
         <div class="well" style="float:left;width:25%;margin-top:-60%;margin-left:0%;text-align:center;font-weight:bold;opacity:0.7;">
             <h2 style="text-align:center;text-decoration: underline;margin-top:-0.2%;font-weight: bold;"> Hood Helpline contacts</h2>

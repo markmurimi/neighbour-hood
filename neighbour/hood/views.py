@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post
+from .models import Profile, Post, Business
 from .forms import ProfileForm
 from django.contrib.auth.models import User
 
@@ -9,8 +9,16 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 def home(request):
-    images = Post.get_posts()
-    return render(request, 'home.html', {"images": images})
+    posts = Post.get_posts()
+    return render(request, 'home.html', {"posts": posts})
+
+def single_photo(request, post_id):
+    photo = Post.objects.get(id=post_id)
+    return render(request, 'image-details.html', {'photo': photo})
+
+def businesses(request):
+    businesses = Business.objects.all() 
+    return render(request, 'business.html', {"businesses": businesses})
 
 @login_required(login_url='/accounts/login')
 def create_profile(request):
@@ -58,13 +66,13 @@ def profile(request):
 
         info = Profile.objects.filter(user=current_user)
 
-        pics = Post.objects.filter(user=request.user.id).all()
+        pics = Post.objects.filter(user=request.profile.id).all()
 
     except:
 
         title = f'{current_user.username}'
 
-        pics = Post.objects.filter(user=request.user.id).all()
+        pics = Post.objects.filter(user=request.profile.id).all()
 
 
     return render(request, 'profile.html', {"title": title, "current_user": current_user, "pics": pics})
