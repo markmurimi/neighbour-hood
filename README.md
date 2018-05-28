@@ -26,3 +26,6 @@ Running the tests is quite easy. You just run the following command on the termi
 
 ## Deployment
 The app is deployed to Heroku platform here is a link to a guided process on deploying to Heroku [Heroku Deployment](https://docs.google.com/document/d/181ZqRfJg7B-8EfzB9HJ8FvzAKXR0y5ccZC6bIeafbv0/edit).
+
+## License
+The app is licensed by[MIT](https://github.com/markmurimi/neighbour-hood-/blob/master/LICENSE).
