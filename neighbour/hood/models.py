@@ -41,6 +41,7 @@ class Post(models.Model):
     post_caption = models.TextField()
     neighbourhood = models.ForeignKey('Neighbourhood')
     date =models.CharField(max_length= 30)
+    business = models.ForeignKey('Business')
 
     def __str__(self):
         return self.name
@@ -52,7 +53,7 @@ class Post(models.Model):
         Returns:
             get_posts : list of image post objects from the database
         ''' 
-        images = Post.objects.all()
+        images = Post.objects.all ()
         return images
 
 class Business(models.Model):
