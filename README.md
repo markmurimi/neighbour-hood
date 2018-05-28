@@ -29,3 +29,10 @@ The app is deployed to Heroku platform here is a link to a guided process on dep
 
 ## License
 The app is licensed by[MIT](https://github.com/markmurimi/neighbour-hood-/blob/master/LICENSE).
+
+## Acknowledgments
+* Moringa School.
+* Ramza(Pair-Programer).
+
+# Created By :
+## Mark Murimi ~ © 2018.
