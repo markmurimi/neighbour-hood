@@ -17,7 +17,7 @@ def single_photo(request, post_id):
     return render(request, 'image-details.html', {'photo': photo})
 
 def businesses(request):
-    businesses = Business.objects.all() 
+    businesses = Business.get_businesses() 
     return render(request, 'business.html', {"businesses": businesses})
 
 @login_required(login_url='/accounts/login')
