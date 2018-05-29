@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post, Business
+from .models import Profile, Post, Business, Neighbourhood
 from .forms import ProfileForm
 from django.contrib.auth.models import User
 
@@ -77,3 +77,16 @@ def profile(request):
 
     return render(request, 'profile.html', {"title": title, "current_user": current_user, "pics": pics})
 
+
+def search_results(request):
+
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        searched_businesses = Post.search_by_neigbourhood(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search-results.html',{"message":message,"businesses": searched_businesses})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search-results.html',{"message":message})

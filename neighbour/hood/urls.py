@@ -10,6 +10,7 @@ urlpatterns=[
     url(r'^profile/', views.profile, name='profile'),
     url(r'^businesses/$', views.businesses, name= 'businesses'),
     url(r'^photo/(\d+)', views.single_photo, name='single_photo'),
+    url(r'^search_results/', views.search_results, name='search_results'),
 
 
 ]

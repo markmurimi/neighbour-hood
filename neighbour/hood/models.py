@@ -94,3 +94,8 @@ class Business(models.Model):
         ''' 
         businesses = Business.objects.all ()
         return businesses
+
+    @classmethod
+    def search_by_neighbourhood(cls,search_term):
+        businesses = cls.objects.filter(neighbourhood__icontains=search_term)
+        return businesses
