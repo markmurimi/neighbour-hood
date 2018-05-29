@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post, Business, Neighbourhood
-from .forms import ProfileForm
+from .forms import ProfileForm, PostForm
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -90,3 +90,34 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search-results.html',{"message":message})
+
+@login_required(login_url='/accounts/login')
+def create_profile(request):
+    '''
+    View function to create and update the profile of the user
+    '''
+    current_user = request.user
+
+    posts = Post.objects.filter(user=current_user).count()
+
+    if request.method == 'POST':
+
+        form = PostForm(request.POST, request.FILES)
+
+        if form.is_valid:
+
+            if posts == 0:
+                k = form.save(commit=False)
+                k.user = current_user
+                k.save()
+                return redirect(home)
+            else:
+                record = Post.objects.filter(user=current_user)
+                record.delete()
+                k = form.save(commit=False)
+                k.user = current_user
+                k.save()
+                return redirect(home)
+    else:
+        form = PostForm()
+    return render(request, 'post_form.html', {"form": form})

@@ -72,7 +72,7 @@ class Business(models.Model):
     neighbourhood = models.ForeignKey('Neighbourhood')
     profile = models.ForeignKey('Profile')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to= 'businesses/')
+    image = models.ImageField(upload_to= 'businesss/')
 
 
     def __str__(self):
