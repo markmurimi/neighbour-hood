@@ -92,7 +92,7 @@ def search_results(request):
         return render(request, 'search-results.html',{"message":message})
 
 @login_required(login_url='/accounts/login')
-def create_profile(request):
+def create_post(request):
     '''
     View function to create and update the profile of the user
     '''

@@ -42,6 +42,7 @@ class Post(models.Model):
     neighbourhood = models.ForeignKey('Neighbourhood')
     date =models.CharField(max_length= 30)
     business = models.ForeignKey('Business')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
