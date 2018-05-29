@@ -29,7 +29,9 @@ class Neighbourhood(models.Model):
             get_posts : list of image post objects from the database
         ''' 
         Neighbourhoods = Neighbourhood.objects.all ()
-        return neighbourhoods
+        return Neighbourhoods
+
+    
 
 class Profile(models.Model):
     name = models.CharField(max_length =20)
@@ -76,6 +78,11 @@ class Post(models.Model):
         '''
         selected_post = Post.objects.filter_by(id=id)
         return selected_post
+
+    @classmethod
+    def get_post_by_neighbourhood_id(cls, neighbourhood_id):
+        images = Post.objects.filter_by(id = neighbourhood_id)
+        return images
 
 class Business(models.Model):
     name = models.CharField(max_length =20)

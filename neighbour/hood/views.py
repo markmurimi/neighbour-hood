@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 def welcome(request):
     return render(request, 'welcome.html')
 
-def home(request):
-    posts = Post.get_posts()
+def home(request, neighbourhood_id):
+    posts = Post.objects.get(id = neighbourhood_id)
     return render(request, 'home.html', {"posts": posts})
 
 def single_photo(request, post_id):
@@ -19,7 +19,7 @@ def single_photo(request, post_id):
 def neighbourhoods(request):
     neighbourhoods = Neighbourhood.get_neighbourhoods()
     return render(request, 'neighbourhoods.html', {'neighbourhoods':neighbourhoods})
-    
+
 def businesses(request):
     businesses = Business.get_businesses() 
     return render(request, 'business.html', {"businesses": businesses})
