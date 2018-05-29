@@ -99,5 +99,5 @@ class Business(models.Model):
 
     @classmethod
     def search_by_neighbourhood(cls,search_term):
-        businesses = cls.objects.filter(neighbourhood__icontains=search_term)
+        businesses = cls.objects.filter(neighbourhood__neighbourhood_name__icontains=search_term)
         return businesses

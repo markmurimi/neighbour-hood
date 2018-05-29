@@ -79,10 +79,10 @@ def profile(request):
 
 
 def search_results(request):
-
-    if 'business' in request.GET and request.GET["business"]:
-        search_term = request.GET.get("business")
-        searched_businesses = Post.search_by_neigbourhood(search_term)
+    # businesses
+    if 'businesses' in request.GET and request.GET["businesses"]:
+        search_term = request.GET.get("businesses")
+        searched_businesses = Business.search_by_neighbourhood(search_term)
         message = f"{search_term}"
 
         return render(request, 'search-results.html',{"message":message,"businesses": searched_businesses})
