@@ -11,5 +11,10 @@
             <h3>Business Email:"{{business.b_email}}"</h3>
             <h3>Neighbourhood:"{{business.neighbourhood.neighbourhood_name}} Neighbourhood."</h3>
         </div>
+    {% empty %}
+    <div class="well"style="background-color:white;margin-left:20%;margin-right:21%;opacity:0.9;margin-top:2%;">
+        <h1 style="text-align: center">No Businesses Yet.</h1>
+    </div>
+
     {% endfor %}
 {% endblock %}
