@@ -16,6 +16,10 @@ def single_photo(request, post_id):
     photo = Post.objects.get(id=post_id)
     return render(request, 'image-details.html', {'photo': photo})
 
+def neighbourhoods(request):
+    neighbourhoods = Neighbourhood.get_neighbourhoods()
+    return render(request, 'neighbourhoods.html', {'neighbourhoods':neighbourhoods})
+    
 def businesses(request):
     businesses = Business.get_businesses() 
     return render(request, 'business.html', {"businesses": businesses})

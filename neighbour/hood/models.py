@@ -21,6 +21,16 @@ class Neighbourhood(models.Model):
         '''Method to delete a neighbourhood'''
         self.delete()
 
+    @classmethod
+    def get_neighbourhoods(cls):
+        '''
+        Method that gets all image posts from the database
+        Returns:
+            get_posts : list of image post objects from the database
+        ''' 
+        Neighbourhoods = Neighbourhood.objects.all ()
+        return neighbourhoods
+
 class Profile(models.Model):
     name = models.CharField(max_length =20)
     neighbourhood = models.ForeignKey('Neighbourhood')
