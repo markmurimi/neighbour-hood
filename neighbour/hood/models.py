@@ -28,7 +28,7 @@ class Neighbourhood(models.Model):
         Returns:
             get_posts : list of image post objects from the database
         ''' 
-        Neighbourhoods = Neighbourhood.objects.all ()
+        Neighbourhoods = cls.objects.all()
         return Neighbourhoods
 
     
@@ -81,7 +81,7 @@ class Post(models.Model):
 
     @classmethod
     def get_post_by_neighbourhood_id(cls, neighbourhood_id):
-        images = Post.objects.filter_by(id = neighbourhood_id)
+        images = Post.objects.filter(id = neighbourhood_id).all()
         return images
 
 class Business(models.Model):

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post, Business, Neighbourhood
 from .forms import ProfileForm, PostForm
@@ -9,7 +9,8 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 def home(request, neighbourhood_id):
-    posts = Post.objects.get(id = neighbourhood_id)
+    posts = Post.objects.filter(neighbourhood= neighbourhood_id).all()
+    print(posts)
     return render(request, 'home.html', {"posts": posts})
 
 def single_photo(request, post_id):
@@ -17,7 +18,7 @@ def single_photo(request, post_id):
     return render(request, 'image-details.html', {'photo': photo})
 
 def neighbourhoods(request):
-    neighbourhoods = Neighbourhood.get_neighbourhoods()
+    neighbourhoods = Neighbourhood.objects.all()
     return render(request, 'neighbourhoods.html', {'neighbourhoods':neighbourhoods})
 
 def businesses(request):
